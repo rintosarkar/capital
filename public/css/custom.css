@@ -1,0 +1,16 @@
+.top-earner{
+	border: 30px solid #9CE6FC;
+	border-radius: 100%;
+	width: 200px;
+	height: 200px;
+	text-align: center;
+	padding-top: 45px;
+	font-size: 22px;
+	line-height: 30px;
+	margin-left: 50px;
+
+}
+
+#news-container{
+	margin: 25px;
+}
