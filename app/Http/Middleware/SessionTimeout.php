@@ -6,6 +6,7 @@ use Closure;
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Session\Store;
+use App\User;
 
 class SessionTimeout
 {
@@ -34,7 +35,13 @@ class SessionTimeout
                    $this->session->put('lastActivityTime',time());
                elseif(time() - $this->session->get('lastActivityTime') > $this->timeout){
                    $this->session->forget('lastActivityTime');
-                   Auth::logout();
+                   
+
+                   User::where('id', Auth::user()->id)
+                    ->update(['is_logged'=> 0]);
+
+                    Auth::logout();
+
                    return redirect('auth/login')->with(['warning' => 'You had not activity in '.$this->timeout/60 .' minutes ago.']);
                }
                $this->session->put('lastActivityTime',time());

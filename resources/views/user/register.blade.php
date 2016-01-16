@@ -17,6 +17,7 @@
 	                  </div>
 	                  {{-- <form id="default" class="form-horizontal"> --}}
 	                  {!! Form::open(['url'=>'user/store', 'class'=>'form-horizontal','id'=>'default']) !!}
+	                  {!! Form::hidden('userId',Auth::user()->id,['id'=>'userId']) !!}
 	                      <fieldset title="Initial Info">
 	                          <legend>Personal Information</legend>
 	                          <div class="form-group">
@@ -264,7 +265,7 @@
 	                              <div class="col-md-6 col-sm-6">
 		                              <div class="input-group">
 		                                <div class="input-group-addon"><i class="fa fa-user"></i></div>
-		                                {!! Form::text('username','',['class'=>'form-control','placeholder'=>'Enter a username']) !!}
+		                                {!! Form::text('username','',['id'=>'username', 'class'=>'form-control','placeholder'=>'Enter a username']) !!}
 		                              </div>
 	                              </div>
 	                            </div>
@@ -347,6 +348,23 @@
 		                              </div>
 	                              </div>
 	                            </div>
+
+	                            <div class="form-group">
+	                              <label class="col-md-2 col-sm-2 control-label">Package</label>
+	                              <div class="col-md-6 col-sm-6">
+		                              <div class="input-group">
+		                                <div class="input-group-addon"><i class="fa fa-sitemap"></i></div>
+		                                {!! Form::select('package',[
+		                                '' => '--Select--',
+		                                '300'	=> '$ 300',
+		                                '700'	=> '$ 700',
+		                                '1000' 	=> '$ 1000',
+		                                '2000' 	=> '$ 2000',
+		                                '4000' 	=> '$ 4000',
+		                                '10000' => '$ 10000',], null, ['id' => 'package', 'class'=>'form-control']) !!}
+		                              </div>
+	                              </div>
+	                            </div>
 	                      </fieldset>
 	                      <fieldset title="Final Step">
 	                          <legend>Final Step Information</legend>
@@ -378,7 +396,9 @@
 @stop
 
 @section('script')
-	<script src="/js/jquery.stepy.js"></script>
+	{{-- // <script src="/"></script> --}}
+	{!! Html::script('js/jquery.stepy.js') !!}
+	{!! Html::script('js/custom/userRegister.js') !!}
 	
 	<script>
 	    /*=====STEPY WIZARD====*/
@@ -390,6 +410,38 @@
 	            titleClick: true,
 	            titleTarget: '.stepy-tab'
 	        });
+	    });
+	    /*=====STEPY WIZARD End====*/
+
+	    $(function(){
+	    	var username = $('#username').val();
+	    	var userId = $('#userId').val();
+	    	var host = window.location.origin;
+	    	var url = host+'/ajaxCheckUser/'+userId;
+
+	    	/*$('#username').click(function(){
+	    		$.ajax({
+	    			'url':host+'/ajaxCheckUser/'+userId,
+	    			'dataType':'json'
+	    		}).success(function(data){
+	    			if(data == 1 ){
+	    				alert(5);
+	    			}
+	    			else alert(data);
+
+
+	    		});
+	    	});*/
+	    	// alert(host);
+
+	    	$.post('ajaxjCheckUser', {
+	    		'username':username,
+	    	}, function(data){
+	    		alert(data);
+	    	});
+	    	
+
+
 	    });
 	</script>    
 @stop

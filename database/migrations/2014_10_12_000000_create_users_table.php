@@ -38,12 +38,12 @@ class CreateUsersTable extends Migration
             $table->string('user_type');
             $table->string('pin');
             $table->string('is_block')->default('n');
-            $table->string('block_issue');
+            $table->string('block_issue')->nullable();
 
 
-            $table->string('last_login_ip');
-            $table->tinyInteger('is_logged');
-            $table->tinyInteger('status');
+            $table->string('last_login_ip')->nullable();
+            $table->tinyInteger('is_logged')->nullable();
+            $table->tinyInteger('status')->default(0);
 
             $table->timestamp('signup_date');
             $table->timestamp('last_login_time');

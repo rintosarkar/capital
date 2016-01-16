@@ -53,6 +53,8 @@ Route::group(['prefix' => 'user', 'middleware' => ['auth','timeout']],  function
 
 });
 
+Route::get('ajaxCheckUser/{userId}','UserController@checkUserLive'); 
+
 
 
 

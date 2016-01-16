@@ -18,6 +18,12 @@ use Auth;
 class DashboardController extends Controller
 {
     public function index(User $user){
+
+    	$u = $user->find(Auth::user()->id);
+
+    	if($u->is_logged==1){
+    		return redirect('dashboard');
+    	}
        
        $userIp = $_SERVER['REMOTE_ADDR'];
 
@@ -26,6 +32,10 @@ class DashboardController extends Controller
        
        
         return view('dashboard.index');
+    }
+
+    public function isLogged(){
+
     }
 
 }
