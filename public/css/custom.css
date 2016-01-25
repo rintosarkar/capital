@@ -14,3 +14,149 @@
 #news-container{
 	margin: 25px;
 }
+
+.error-msg{
+	color: #f00;
+	margin-top: 10px;
+	float: left;
+}
+
+.button-next{
+	margin-right: 230px;
+}
+
+.testClass{
+	/*color:red !important;*/
+}
+
+.userRegErr{
+	list-style: none;
+}
+
+.field{
+	border-color: red !important;
+	border: 1px solid rgba(255,0,0,.02);
+	text-align: center;
+	margin-bottom: 20px;
+}
+
+.payment-system a{
+	color:white;
+}
+
+.payment-system a:hover{
+	color:white;
+}
+
+/*Confirmation page*/
+
+.confirm-head{
+	background: #1BA5E8;
+	/*width: 100%;*/
+	color:#fff;
+	padding: 1em 0 1em 1em;
+	border-top-left-radius: 1em;
+	border-top-right-radius: 1em;
+}
+.confirm-head p{
+	/*float: left;*/
+	text-align: center;
+	font-size: 1em;
+}
+
+.confirm-body{
+	background: #fff;
+	/*height: 500px;*/
+	/*padding: 2.5em;*/
+}
+
+.confirm-title{
+	color:#000;
+	font-size: 1.25em;
+	font-weight: bolder;
+	
+}
+
+.confirm-field{
+	padding: 20px 20px 5px 20px;
+	background: rgba(0,0,0,.02);
+	border-radius: 5px;
+	border-bottom: 1px solid rgba(0,0,0,.12);
+}
+
+.confirm-body p{
+	display: inline-block;
+}
+
+/*Balance Transfer Form style*/
+
+#r2w, 
+#r2r,
+ #w2w,
+#r2wpreview,
+#r2rpreview,
+#w2wpreview{
+	text-align: center;
+}
+
+.bt-title{
+	color:#202935;
+	padding-bottom: 1em;
+	font-size: 1.5em;
+}
+
+.form-header{
+	background: #1BA5E8;
+	height: 100px;
+	border-radius: 10px;
+	color:#fff;
+	padding: 1.5em;
+}
+
+.title{
+	font-size: 1.5em;
+}
+
+.form-header p{
+	display: inline-block;
+}
+
+.balance{
+	width: 90%;
+	color: rgba(0,0,0,.6);
+	background: rgba(0,0,0,.02);
+	padding-left: 1em;
+	border:none;
+	border-bottom: 1px solid rgba(255,255,255,.4);
+	border-left: 1px solid rgba(255,255,255,.4);
+	font-weight: bolder;
+}
+
+.form-body{
+	background: #fff;
+	margin-top: 10px;
+	min-height: 400px;
+	/*border-radius: 10px;*/
+	border-top-left-radius: 1em;
+	border-top-right-radius: 1em;
+	padding: 3.5em 1.5em 1.5em 1.5em;
+}
+
+.aware-msg{
+	position: relative;
+	background: #e2e2e2;
+	color:#2A323F;
+	padding: .5em 0 .05em .5em;
+}
+
+#errMsgRtwAmount, #errMsgRtwPin{
+	float: left;
+}
+
+#r2wpreview{
+	/*display: none;*/
+}
+
+.current{
+	display: none;
+}

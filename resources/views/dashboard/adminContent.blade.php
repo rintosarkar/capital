@@ -19,7 +19,7 @@
                             <i class="fa fa-user"></i>
                         </div>
                         <div class="col-xs-8">
-                            <span class="state-title"> Members Joining Today </span>
+                            <span class="state-title">Members Joining Today </span>
                             <h4> 2,232</h4>
                         </div>
                     </div>

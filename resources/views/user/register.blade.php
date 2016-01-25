@@ -3,21 +3,30 @@
 @section('style')
 	{{-- <link href="css/style.css" rel="stylesheet"> --}}
 	<link href="/css/jquery.stepy.css" rel="stylesheet">
+	<link href="/css/custom.css" rel="stylesheet">
 	{{-- <link href="css/style-responsive.css" rel="stylesheet"> --}}
 
 @stop
 
 @section('body-content')
 	    
+	    <!-- <div class="row">
+	    	<div class="col-md-8 col-md-offset-2">
+	    		
+	    		<div id="errMsgUser" role="alert">
+	    			
+	    		</div>
+	    	</div> 
+	    </div> -->
 	  <div class="row">
-	      <div class="col-md-12">
+	      <div class="col-md-8 col-md-offset-2">
 	          <div class="square-widget">
 	              <div class="widget-container">
 	                  <div class="stepy-tab">
 	                  </div>
 	                  {{-- <form id="default" class="form-horizontal"> --}}
 	                  {!! Form::open(['url'=>'user/store', 'class'=>'form-horizontal','id'=>'default']) !!}
-	                  {!! Form::hidden('userId',Auth::user()->id,['id'=>'userId']) !!}
+	                  {!! Form::hidden('userId', Auth::user()->id, ['id'=>'userId']) !!}
 	                      <fieldset title="Initial Info">
 	                          <legend>Personal Information</legend>
 	                          <div class="form-group">
@@ -25,8 +34,9 @@
 	                              <div class="col-md-6 col-sm-6">
 		                              <div class="input-group">
 		                                <div class="input-group-addon"><i class="fa fa-user-secret"></i></div>
-		                                {!! Form::text('full_name','',['class'=>'form-control','placeholder'=>'Enter your full name']) !!}
+		                                {!! Form::text('full_name','',['id' => 'full_name' ,'class'=>'form-control','placeholder'=>'Enter your full name']) !!}
 		                              </div>
+		                              <span id="errMsgUserFull" class="error-msg"></span>
 	                              </div>
 	                            </div>
 
@@ -35,9 +45,9 @@
 	                              <div class="col-md-6 col-sm-6">
 		                              <div class="input-group">
 		                                <div class="input-group-addon"><i class="fa fa-road"></i></div>
-		                                {{-- <input type="text" class="form-control" id="exampleInputAmount" placeholder="Address 1"> --}}
-		                                {!! Form::text('address1','',['class'=>'form-control','placeholder'=>'Enter Address 1']) !!}
+		                                {!! Form::text('address1','',['id' => 'address1' ,'class'=>'form-control','placeholder'=>'Enter Address ']) !!}
 		                              </div>
+		                              <span id="errMsgUserAdd" class="error-msg"></span>
 	                              </div>
 	                            </div>
 
@@ -46,7 +56,7 @@
 	                              <div class="col-md-6 col-sm-6">
 		                              <div class="input-group">
 		                                <div class="input-group-addon"><i class="fa fa-road"></i></div>
-		                                {!! Form::text('address2','',['class'=>'form-control','placeholder'=>'Enter Address 2']) !!}
+		                                {!! Form::text('address2','',['class'=>'form-control','placeholder'=>'Enter Address']) !!}
 		                              </div>
 	                              </div>
 	                            </div>
@@ -59,8 +69,9 @@
 		                                {!! Form::select('gender',[
 		                                '' => '--Select your gender',
 		                                'male'=>'Male',
-		                                'female'=>'Female'], null, ['class'=>'form-control']) !!}
+		                                'female'=>'Female'], null, ['id'=>'gender','class'=>'form-control']) !!}
 		                              </div>
+		                              <span id="errMsgUserGen" class="error-msg"></span>
 	                              </div>
 	                            </div>
 
@@ -251,8 +262,9 @@
 		                                	'PT'=>'Portugal',
 		                                	'PR'=>'Puerto Rico',
 		                                	'QA'=>'Qatar',
-		                                ], null, ['class'=>'form-control']) !!}
+		                                ], null, [ 'id' =>'country' ,'class'=>'form-control']) !!}
 		                              </div>
+		                              <span id="errMsgUserCon" class="error-msg"></span>
 	                              </div>
 	                            </div>
 	                          
@@ -267,6 +279,7 @@
 		                                <div class="input-group-addon"><i class="fa fa-user"></i></div>
 		                                {!! Form::text('username','',['id'=>'username', 'class'=>'form-control','placeholder'=>'Enter a username']) !!}
 		                              </div>
+		                              <span id="errMsgUser" class="error-msg"></span>
 	                              </div>
 	                            </div>
 
@@ -275,18 +288,20 @@
 	                              <div class="col-md-6 col-sm-6">
 		                              <div class="input-group">
 		                                <div class="input-group-addon"><i class="fa fa-mobile"></i></div>
-		                                {!! Form::text('phone_number','',['class'=>'form-control','placeholder'=>'Enter a valid phone number']) !!}
-		                              </div>
+		                                {!! Form::text('phone_number','',[ 'id'=>'phone_number' ,'class'=>'form-control','placeholder'=>'Enter a valid phone number', 'required'=>'required']) !!}
+		                              </div> 
+		                              <span id="errMsgPhone" class="error-msg"></span>
 	                              </div>
-	                            </div>
+	                            </div> 
 
 	                            <div class="form-group">
 	                              <label class="col-md-2 col-sm-2 control-label">Email</label>
 	                              <div class="col-md-6 col-sm-6">
 		                              <div class="input-group">
 		                                <div class="input-group-addon"><i class="fa fa-at"></i></div>
-		                                {!! Form::email('email','', ['class'=>'form-control','placeholder'=>'Enter a E-mail address']) !!}
+		                                {!! Form::email('email','', [ 'id' => 'email','class'=>'form-control','placeholder'=>'Enter a E-mail address', 'required'=>'required']) !!}
 		                              </div>
+		                              <span id="errMsgEmail" class="error-msg"></span>
 	                              </div>
 	                            </div>
 
@@ -295,8 +310,9 @@
 	                              <div class="col-md-6 col-sm-6">
 		                              <div class="input-group">
 		                                <div class="input-group-addon"><i class="fa fa-lock"></i></div>
-		                                {!! Form::password('password',['class'=>'form-control','placeholder'=>'Enter a password']) !!}
+		                                {!! Form::password('password',[ 'id'=>'password' ,'class'=>'form-control','placeholder'=>'Enter a password']) !!}
 		                              </div>
+		                              <span id="errMsgPass" class="error-msg"></span>
 	                              </div>
 	                            </div>
 
@@ -305,8 +321,9 @@
 	                              <div class="col-md-6 col-sm-6">
 		                              <div class="input-group">
 		                                <div class="input-group-addon"><i class="fa fa-lock"></i></div>
-		                                {!! Form::password('re-password',['class'=>'form-control','placeholder'=>'Re-enter a password']) !!}
+		                                {!! Form::password('re-password',[ 'id'=>'rpassword' ,'class'=>'form-control','placeholder'=>'Re-enter a password']) !!}
 		                              </div>
+		                              <span id="errMsgRPass" class="error-msg"></span>
 	                              </div>
 	                            </div>
 	                      </fieldset>
@@ -320,8 +337,8 @@
 		                              <div class="input-group">
 		                                <div class="input-group-addon"><i class="fa fa-user"></i></div>
 		                                {!! Form::text('referrar_id','', ['id'=>'referrar_id', 'class'=>'form-control','placeholder'=>'Enter your Referrar\'s ID']) !!}
-
 		                              </div>
+		                              <span id="errMsgRef" class="error-msg"></span>
 	                              </div>
 	                            </div>
 
@@ -332,7 +349,8 @@
 		                                <div class="input-group-addon"><i class="fa fa-lock"></i></div>
 		                                {{-- <input type="text" class="form-control" id="exampleInputAmount" placeholder=""> --}}
 		                                {!! Form::text('upline_id','', ['id'=>'upline_id', 'class'=>'form-control','placeholder'=>'Enter your imediate ID']) !!}
-		                              </div>
+		                              </div> 
+		                              <span id="errMsgUp" class="error-msg"></span>
 	                              </div>
 	                            </div>
 
@@ -341,15 +359,13 @@
 	                              <div class="col-md-6 col-sm-6">
 		                              <div class="input-group">
 		                                <div class="input-group-addon"><i class="fa fa-sitemap"></i></div>
-		                                {!! Form::select('placement',[
-		                                '' => '--Select--',
-		                                '1'=>'Left',
-		                                '2'=>'Right'], null, ['id' => 'placement', 'class'=>'form-control']) !!}
+		                                {!! Form::select('placement',[], null, ['id' => 'placement', 'class'=>'form-control']) !!}
+		                                {{-- <select id="placement" class="form-control" name="placement"></select> --}}
 		                              </div>
 	                              </div>
 	                            </div>
 
-	                            <div class="form-group">
+	                            {{-- <div class="form-group">
 	                              <label class="col-md-2 col-sm-2 control-label">Package</label>
 	                              <div class="col-md-6 col-sm-6">
 		                              <div class="input-group">
@@ -364,7 +380,7 @@
 		                                '10000' => '$ 10000',], null, ['id' => 'package', 'class'=>'form-control']) !!}
 		                              </div>
 	                              </div>
-	                            </div>
+	                            </div> --}}
 	                      </fieldset>
 	                      <fieldset title="Final Step">
 	                          <legend>Final Step Information</legend>
@@ -377,6 +393,15 @@
 	                      <button class="btn btn-info finish">
 	                          Finish </button>
 	                  </form>
+	                  @if (count($errors) > 0)
+	                      <div class="alert alert-danger">
+	                          <ul>
+	                              @foreach ($errors->all() as $error)
+	                                  <li class="userRegErr">{{ $error }}</li>
+	                              @endforeach
+	                          </ul>
+	                      </div>
+	                  @endif
 	              </div>
 	          </div>
 	      </div>
@@ -397,8 +422,17 @@
 
 @section('script')
 	{{-- // <script src="/"></script> --}}
-	{!! Html::script('js/jquery.stepy.js') !!}
 	{!! Html::script('js/custom/userRegister.js') !!}
+	{!! Html::script('js/jquery.stepy.js') !!}
+	
+	{{-- {!! Html::script('js/jquery-1.10.2.min.js') !!} --}}
+	{{-- {!! Html::script('js/jquery-ui-1.9.2.custom.min.js') !!} --}}
+	{{-- {!! Html::script('js/jquery-migrate-1.2.1.min.js') !!} --}}
+	{{-- {!! Html::script('js/bootstrap.min.js') !!} --}}
+	{{-- {!! Html::script('js/modernizr.min.js') !!} --}}
+	{{-- {!! Html::script('js/jquery.nicescroll.js') !!} --}}
+	{!! Html::script('js/jquery.validate.min.js') !!}
+	{!! Html::script('js/validation-init.js') !!}
 	
 	<script>
 	    /*=====STEPY WIZARD====*/
@@ -406,42 +440,17 @@
 	        $('#default').stepy({
 	            backLabel: 'Previous',
 	            block: true,
-	            nextLabel: 'Next',
+	            nextLabel: 'next',
 	            titleClick: true,
 	            titleTarget: '.stepy-tab'
 	        });
+
 	    });
+
+
 	    /*=====STEPY WIZARD End====*/
 
-	    $(function(){
-	    	var username = $('#username').val();
-	    	var userId = $('#userId').val();
-	    	var host = window.location.origin;
-	    	var url = host+'/ajaxCheckUser/'+userId;
-
-	    	/*$('#username').click(function(){
-	    		$.ajax({
-	    			'url':host+'/ajaxCheckUser/'+userId,
-	    			'dataType':'json'
-	    		}).success(function(data){
-	    			if(data == 1 ){
-	    				alert(5);
-	    			}
-	    			else alert(data);
 
 
-	    		});
-	    	});*/
-	    	// alert(host);
-
-	    	$.post('ajaxjCheckUser', {
-	    		'username':username,
-	    	}, function(data){
-	    		alert(data);
-	    	});
-	    	
-
-
-	    });
 	</script>    
 @stop

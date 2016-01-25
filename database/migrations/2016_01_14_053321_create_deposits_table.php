@@ -18,10 +18,10 @@ class CreateDepositsTable extends Migration
             $table->integer('amount');
             $table->string('pmnt_method',6);
             $table->string('pmnt_account',50);
-            $table->string('amnt_rcvd');
-            $table->timestamp('request_date');
+            // $table->string('amnt_rcvd');
+            // $table->timestamp('request_date');
             $table->timestamp('rcvd_date');
-            $table->string('schedule_gnrtd');
+            // $table->string('schedule_gnrtd');
 
             $table-> foreign('user_id')
                   -> references('id')

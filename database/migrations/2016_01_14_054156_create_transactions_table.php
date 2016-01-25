@@ -18,6 +18,7 @@ class CreateTransactionsTable extends Migration
             $table->decimal('amount',10,5);
             $table->string('sign');
             $table->string('purpose');
+            $table->decimal('proce_fee');
             $table->timestamp('date');
             $table->integer('user_id')->unsigned();
             $table->integer('related_id')->unsigned();

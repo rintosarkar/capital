@@ -18,7 +18,7 @@ class CreateRoirecordsTable extends Migration
             $table->decimal('amount', 10,2);
             $table->timestamp('pmnt_date');
             $table->string('terms');
-            $table->tinyInteger('smnt_generated');
+            // $table->tinyInteger('smnt_generated'); its deleted 21.01.16. 12.09am
             $table->string('status');
 
             $table-> foreign('deposit_id')

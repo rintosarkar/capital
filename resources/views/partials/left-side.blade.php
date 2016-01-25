@@ -36,7 +36,7 @@
             <li class="menu-list nav-active"><a href="{!! url('admin') !!}"><i class="fa fa-home"></i> <span>Dashboard</span></a>
                 <ul class="sub-menu-list">
                    @if(Auth::user()->roles()->first()->name == 'user') 
-                    <li><a href="{!! url('dashboard') !!}"> User Dashboard</a></li>
+                    <li><a href="{!! url('admin') !!}"> User Dashboard</a></li>
                    @else 
                     <li class="active"><a href="{!! url('admin') !!}"> Admin Dashboard</a></li>
                    @endif 
@@ -105,7 +105,7 @@
             @if(Auth::user()->roles()->first()->name == 'admin')
                 <li><a href="fontawesome.html"><i class="fa fa-group"></i> <span>Referral Tree</span></a></li>
 
-                <li><a href="fontawesome.html"><i class="fa fa-user"></i> <span>Join a Member</span></a></li>
+                <li><a href="{{ url('user/register')}}"><i class="fa fa-user"></i> <span>Join a Member</span></a></li>
 
                 <li><a href="fontawesome.html"><i class="fa fa-briefcase"></i> <span>Business Concept</span></a></li>
 

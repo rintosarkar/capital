@@ -43,6 +43,30 @@
  {{-- Page Heading section end --}}
 
  @section('body-content')
+	
+	@if(Session::get('message'))
+		<div class="row">
+			<div class="col-sm-12 col-md-12">
+				
+				@if(Session::get('message') == 'You have not sufficent balance')
+					<div class="alert alert-danger fade in">
+						<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+						{{ Session::get('message') }}
+					</div>
+				@elseif(Session::get('message') == 'Successfully Activated')
+					<div class="alert alert-success fade in">
+						<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+						{{ Session::get('message') }}
+					</div>
+				@endif
+				
+			</div> 
+		</div>
+	@endif
+	
+
+ 	@if(Auth::user()->status == 1)
+		
  	<div class="row">
  	    <div class="col-md-6">
  	        <!--statistics start-->
@@ -140,6 +164,67 @@
  	        <!--more statistics box end-->
  	    </div>
  	</div>
+ 	
+ 	@else
+ 		{{-- <h2>{{ Auth::user()->status }}</h2> --}}
+ 		<div class="row">
+ 			<div class="col-sm-12 col-md-12">
+ 				<div class="message">
+ 					<div class="alert alert-danger text-center">
+ 						<p class="h2">Your account is inactive!! </p>
+ 						<p class="h5"> Active your account to enable available features</p>
+ 					</div>
+ 				</div>
+ 				<button id="activate" class="btn btn-success btn-lg pull-center">Activate</button>
+ 				<div class="payment-system">
+ 					<h2>You must pay $25 as activation charge</h2>
+ 					
+ 					<div class="row states-info">
+ 						<a href="{!! url('user/pay') !!}">
+ 							<div class="col-md-3">
+ 							    <div class="panel red-bg">
+ 							        <div class="panel-body">
+ 							            <div class="row">
+ 							                <div class="col-xs-4">
+ 							                    <i class="fa fa-money"></i>
+ 							                </div>
+ 							                <div class="col-xs-8">
+ 							                    <span class="state-title"> Pay from wallet </span>
+ 							                     @if($balance)
+ 							                     <h4>USD {{ $balance }}</h4>
+ 							                     @endif
+ 							                </div>
+ 							            </div>
+ 							        </div>
+ 							    </div>
+ 							</div>
+ 						</a>
+ 						<a href="">
+ 							<div class="col-md-3">
+ 							    <div class="panel blue-bg">
+ 							        <div class="panel-body">
+ 							            <div class="row">
+ 							                <div class="col-xs-4">
+ 							                    <i class="fa fa-tag"></i>
+ 							                </div>
+ 							                <div class="col-xs-8">
+ 							                    <span class="state-title">  Pay with Perfect Money  </span>
+ 							                    <h4>$ 25</h4>
+ 							                </div>
+ 							            </div>
+ 							        </div>
+ 							    </div>
+ 							</div>
+ 						</a>
+ 					</div> {{-- row end --}}
+
+
+ 				</div>
+ 			</div> 
+ 		</div>
+
+ 	@endif
+
  	<div class="row">
  	    <div class="col-md-8">
  	        <div class="panel">
@@ -550,6 +635,16 @@ $(function(){
         mousePause: false,
         showItems: 3
     });
+});
+
+$(function(){
+	$('.payment-system').hide();
+	$('#activate').click(function(){
+		$('.message').slideUp(1200);
+		$('#activate').hide(1000);
+		$('.payment-system').slideDown(1500);
+
+	});
 });
 </script>
 
